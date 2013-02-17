@@ -6,25 +6,25 @@
 \setlength{\textwidth}{7.00in}
 \begin{document}
 \title{A Data Analysis of LoansData}
-\author{Shaun J. Michel}
+\author{Shaun J. Michel \\machinelush@gmail.com}
 
 \maketitle
 \section{Introduction}
 \section{Methods}
 \subsection{Data Collection}
 <<myPreamble, cache=TRUE, eval=TRUE, dpi=300, dev='png'>>=
-  library(Hmisc) # data manipulation functions
-  library(ggplot2) #generate plots
-  set.seed(092274) #set seed for reproducibility
+library(Hmisc) # data manipulation functions
+library(ggplot2) #generate plots
+set.seed(092274) #set seed for reproducibility
 @
 
 <<loadData, cache=TRUE, eval=TRUE, dpi=300, dev='png'>>=
-  getwd()
-  download.file("http://earthquake.usgs.gov/earthquakes/catalogs/eqs7day-M1.txt",destfile="../../data/earthquakes.csv",method="curl")
-  dateDownloaded <- date()
-  dateDownloaded
-  quakesRaw <- read.csv('../../data/earthquakes.csv')
-  save(quakesRaw,dateDownloaded,file="../../data/quakesRaw.rda")
+getwd()
+download.file("https://spark-public.s3.amazonaws.com/dataanalysis/loansData.csv",destfile="../data/rawLData.csv",method="curl")
+dateDownloaded <- date()
+dateDownloaded
+loansRaw <- read.csv("../data/rawLData.csv")
+save(loansRaw,dateDownloaded,file="../data/rawLData.rda")
 @
 \subsection{Exploratory Analysis}
 \subsection{Statistical Modeling}
@@ -33,17 +33,17 @@
 \section{Conclusion}
 \section{References}
 \begin{thebibliography}{9}
-  \bibitem{lamport94}
-	  Leslie Lamport,
-	  \emph{\LaTeX: A Document Preparation System}.
-	  Addison Wesley, Massachusetts,
-	  2nd Edition,
-	  1994.
-  \bibitem{wickham2009}
-    Hadley Wickham,
-	  \emph{ggplot2: Elegant Graphics for Data Analysis}.
-	  Springer Science+Business Media, New York, NY
-	  2009. 
+\bibitem{lamport94}
+Leslie Lamport,
+\emph{\LaTeX: A Document Preparation System}.
+Addison Wesley, Massachusetts,
+2nd Edition,
+1994.
+\bibitem{wickham2009}
+Hadley Wickham,
+\emph{ggplot2: Elegant Graphics for Data Analysis}.
+Springer Science+Business Media, New York, NY
+2009. 
 \end{thebibliography}
 
 \end{document}
